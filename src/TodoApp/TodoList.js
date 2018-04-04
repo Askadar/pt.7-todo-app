@@ -5,8 +5,6 @@ import Todo from './Todo';
 import Header from './TodoHeader';
 import AddTodoField from './AddTodoField';
 
-import './todo.css';
-
 const TodoRecord = Record({
 	text: 'Todo is to do',
 	done: false
@@ -32,6 +30,12 @@ class TodoList extends Component {
 				);
 				return this.setState({todos: newTodoSet});
 			},
+			onTodoAdd: (text = '') => {
+				if (text === '') return false;
+				const todos = this.state.todos;
+				this.setState({todos: todos.push(TodoRecord({text}))});
+				return true;
+			},
 			onTodoDelete: (deleting) => {
 				if (!isNaN(deleting) && this.state.deletingTodo === deleting){
 					handlers.onTodoDeleted(true);
@@ -47,12 +51,6 @@ class TodoList extends Component {
 				const todos = this.state.todos;
 				let newTodoSet = todos.remove(this.state.deletingTodo);
 				return this.setState({todos: newTodoSet});
-			},
-			onTodoAdd: (text = '') => {
-				if (text === '') return false;
-				const todos = this.state.todos;
-				this.setState({todos: todos.push(TodoRecord({text}))});
-				return true;
 			},
 			onTodoEdit: (index, text) => {
 				console.log(this, this.state.editingTodo);

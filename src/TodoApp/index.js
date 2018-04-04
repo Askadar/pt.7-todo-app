@@ -9,6 +9,8 @@ import TodoList from './TodoList';
 // 	return handlers
 // }, {})
 
+import './todo.css';
+
 class TodoApp extends Component {
 	render() {
 		return (

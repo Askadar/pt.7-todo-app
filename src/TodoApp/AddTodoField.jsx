@@ -10,8 +10,9 @@ class AddTodoField extends React.Component {
 	render(){
 		const { onTodoAdd } = this.props;
 		const { newTodoText } = this.state;
+		const addTodo = (e) => e.preventDefault() || onTodoAdd(newTodoText) && this.setState({newTodoText: ''});
 		return (
-			<div className="todo-add">
+			<form className="todo-add" onSubmit={addTodo}>
 				<label className={
 					`input-field--wrap${this.state.focused ? ' focused' : ''}`
 				}>
@@ -28,12 +29,10 @@ class AddTodoField extends React.Component {
 				</label>
 				<button
 					className="input-button todo-add--button"
-					onClick={
-						() => onTodoAdd(newTodoText) && this.setState({newTodoText: ''})
-					}>
+					onClick={addTodo}>
 					<CheckMark/>
 				</button>
-			</div>
+			</form>
 		);
 	}
 }
