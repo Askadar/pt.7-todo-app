@@ -1,0 +1,251 @@
+tr(enabled, duration = 280ms)
+	transition duration all ease-in-out
+
+satura = #ab00ff
+saturaBleaked = #e0b2f7
+mesame = #61aac2
+mesameBleaked = #cfe5ed
+fulla = #009ad6
+suru = #ffb833
+suruBleaked = #fbe0b6
+
+ff = 'Comfortaa', sans-serif
+*
+	box-sizing border-box
+
+.input-button
+.input-field
+	height 100%
+	background none
+	border none
+	font-size 1em
+	font-family ff
+	// outline none
+	&:hover
+	&:focus
+		outline none
+		box-shadow none
+
+.todos
+	width 600px
+	margin 8px auto
+	padding 24px 16px
+	border mesameBleaked 1px solid
+	font-family ff
+	font-weight 400
+	font-size 20px
+	.todos-header
+		font-size 1.2em
+		text-align center
+		margin 0 auto 8px
+	& > *
+		margin-bottom 8px
+
+.todo .todo-label
+	user-select none
+	cursor pointer
+	display flex
+	vertical-align middle
+	.input-field
+		padding-left 40px
+	.input-field--wrap
+		padding 0
+		margin-bottom 2px
+	.input-button
+		margin-left 4px
+	.todo-text
+		display inline-block
+		position relative
+		line-height 1.4
+		margin 0 4px
+		flex-grow 1
+		&:after
+			content ''
+			position absolute
+			display inline-block
+			vertical-align bottom
+			width 0%
+			height 1px
+			bottom 1px
+			left 0
+			background-color mesameBleaked
+			tr 1
+	&:hover .todo-text:after
+		width 100%
+	&.done .todo-text
+		text-decoration line-through
+		text-decoration-color saturaBleaked
+	// 	width 100%
+	// 	background-color satura
+	// 	bottom 50%
+	// 	height 2px
+	.todo-done
+		padding 1px 6px
+		display inline-block
+		height 100%
+		border 2px solid mesameBleaked
+		tr 1
+		input[type=checkbox]
+			display none
+		.ui-icon
+			&:before
+			&:after
+				background mesame
+	&.done
+		.todo-done
+			border-color saturaBleaked
+			.ui-icon
+				&:before
+				&:after
+					background satura
+
+	.todo-remove--button.deleting
+	.todo-edit--button.editing
+			border-color suruBleaked
+			span:after
+			span:before
+				background-color suru
+				width 70%
+				left 15%
+
+.todo-add
+	display flex
+	.input-field--wrap
+		flex-grow 1
+
+.input-button
+	border 2px solid mesameBleaked
+	tr 1
+	cursor pointer
+	span
+	span.ui-cross
+		&:after
+		&:before
+			background mesame
+	&:hover
+		border-color saturaBleaked
+		span
+			&:after
+			&:before
+				background satura
+
+.input-field--wrap
+	padding 4px
+	position relative
+	flex-grow 1
+	& .input-field
+		padding-left 36px
+		width 100%
+	&:after
+		display block
+		position absolute
+		content ''
+		width 0%
+		tr 1
+		height 1px
+		margin-left 36px
+		background mesameBleaked
+	&:hover:after
+	&.focused:after
+		width 90%
+	&.focused:after
+		height 2px
+		background saturaBleaked
+
+// .ui-pencil
+.ui-icon
+	position relative
+	width 1em
+	height 1em
+	display inline-block
+	vertical-align middle
+	tr 1
+	// temp V
+	overflow hidden
+
+// .ui-pencil
+// 	&:before
+// 	&:after
+// 		content ''
+// 		background mesame
+// 		tr 1
+// 		position absolute
+// 		width 90%
+// 		height 10%
+// 		left 5%
+// 		bottom 53.5%
+// 	&:before
+// 		background white
+// 		transform rotate(-45deg)
+// 		height 5%
+// 		border 2px solid mesame
+// 		border-left none
+// 	&:after
+// 		background none
+
+.faded
+	opacity 0.25
+
+.ui-circle
+	&:before
+	&:after
+		content ''
+		tr 1
+		position absolute
+		background white
+		width 70%
+		height 70%
+		left 5%
+		bottom 5%
+		border-radius 50%
+	&:before
+		width 80%
+		height 80%
+		background mesame
+		left 5%
+		bottom 5%
+
+.ui-cross
+	&:before
+	&:after
+		content ''
+		background mesame
+		tr 1
+		position absolute
+		width 90%
+		height 10%
+		left 5%
+		bottom 53.5%
+	&:before
+		transform rotate(45deg)
+	&:after
+		transform rotate(-45deg)
+.ui-checkmark
+	&:before
+	&:after
+		content ''
+		background satura
+		tr 1
+		position absolute
+		width 90%
+		height 10%
+		left 5%
+		bottom 53.5%
+	&:before
+		transform rotate(45deg)
+		width 35%
+		left 10%
+	&:after
+		transform rotate(-45deg)
+		width 70%
+		left 30%
+		bottom 58.5%
+
+
+@media screen and (max-width: 616px) {
+	.todos {
+		width 100%
+		font-size 14px
+		margin 0
+	}
+}
